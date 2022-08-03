@@ -65,3 +65,17 @@ object { allowedHosts?, bonjour?, client?, compress?, devMiddleware?, headers?,
 To repair this issue, I copied the sample `webpack.config.js` from
 [the webpack website page for TypeScript](https://webpack.js.org/guides/typescript/) and then changed the `entry` value
 to `./app/app.ts` to conform to the data in the original `webpack.config.js`. 
+
+Additionally, I had to add a `node: development` property and to specify the `devServer` entry:
+
+```
+  devServer: {
+    static: {
+      directory: __dirname,
+    },
+    compress: true,
+    port: 9000,
+  },
+```
+
+Finally, it works!
