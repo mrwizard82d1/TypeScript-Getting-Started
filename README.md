@@ -33,3 +33,17 @@ I tried the fix that I had discovered earlier, changing the command invoked by `
 I worked around the inability to specify the `--openssl-legacy-provider` by specifying the option on the command line
 and running the command from a `bash` shell: `export NODE_OPTIONS=--openssl-legacy-provider && npm start`. This option
 allows me to run `npm start` without error. Even better, the code changes actually have the intended effect.
+
+I would prefer not to encounter more of these kinds of version errors. I've been able to solve most of them so far, but 
+they do not really help me to learn. I plan to prototype reinitializing the project with the specified packages.
+
+- "ts-loader": "8.0.17",
+- "typescript": "4.2.2",
+- "webpack": "5.22.0",
+- "webpack-cli": "4.5.0",
+- "webpack-dev-server": "3.11.2"
+
+Note that the versions are the original versions from the (out-of-date) `package.json`.
+
+To perform this update, I removed all the dependencies from `package.json` and deleted the both the `node_modules`
+directory and `package-lock.json. (I think I will also use `yarn`) instead of `npm`.
