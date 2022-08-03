@@ -47,3 +47,21 @@ Note that the versions are the original versions from the (out-of-date) `package
 
 To perform this update, I removed all the dependencies from `package.json` and deleted the both the `node_modules`
 directory and `package-lock.json. (I think I will also use `yarn`) instead of `npm`.
+
+Of course, it is not quite that simple. The `webpack.config.js` specifies options that are no longer valid. 
+Specifically, `webpack` reported the following error:
+
+> Invalid options object. Dev Server has been initialized using an options object that does not match the API 
+> schema.
+> options has an unknown property 'inline'. These properties are valid:
+```
+object { allowedHosts?, bonjour?, client?, compress?, devMiddleware?, headers?,
+         historyApiFallback?, host?, hot?, http2?, https?, ipc?, liveReload?, magicHtml?,
+         onAfterSetupMiddleware?, onBeforeSetupMiddleware?, onListening?, open?, port?,
+         proxy?, server?, setupExitSignals?, setupMiddlewares?, static?,
+         watchFiles?, webSocketServer? }
+```
+
+To repair this issue, I copied the sample `webpack.config.js` from
+[the webpack website page for TypeScript](https://webpack.js.org/guides/typescript/) and then changed the `entry` value
+to `./app/app.ts` to conform to the data in the original `webpack.config.js`. 
